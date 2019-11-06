@@ -11,7 +11,7 @@ library(sqldf)
 library(lubridate)
 
 # Read the data, using SQL queries to subset data only for the dates 01-02-2007 and 02-02-2007
-Power <- "./ExData_Plotting1/household_power_consumption.txt"
+Power <- "household_power_consumption.txt"
 pow <- file(Power)
 power_sub <- sqldf("select * from pow where Date == '1/2/2007' or Date == '2/2/2007'", 
                    file.format = list(header = TRUE, sep = ";"))
@@ -20,7 +20,7 @@ power_sub <- sqldf("select * from pow where Date == '1/2/2007' or Date == '2/2/2
 power_sub$DT <- with(power_sub, dmy(Date) + hms(Time))
 
 # Opens a png device to plot a line graph of Global Active Power over time
-png("./ExData_Plotting1/plot2.png")
-with(power_sub, plot(DT, Global_active_power,type="n", ylab = "Global Active Power (kilowatts)"))
+png("plot2.png")
+with(power_sub, plot(DT, Global_active_power,type="n", ylab = "Global Active Power (kilowatts)", xlab=""))
 with(power_sub, lines(DT, Global_active_power))
 dev.off()
