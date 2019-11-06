@@ -2,12 +2,12 @@
 ####### Author: Jack Sternal
 ####### Date: 06 November 2019
 
-# Outside of these programs, the file utilized for these graphs was downloaded as a .zip and extracted into
-# the Git Repository that will contain these R files. These programs will only focus on loading, cleaning, and analyzing
-# the data
-
 # load sqldf library
 library(sqldf)
+
+#Download and unzip file
+download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",destfile = "power.zip")
+unzip("power.zip")
 
 # Read the data, using SQL queries to subset data only for the dates 01-02-2007 and 02-02-2007
 Power <- "household_power_consumption.txt"
